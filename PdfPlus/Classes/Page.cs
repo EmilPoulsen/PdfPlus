@@ -608,8 +608,11 @@ namespace PdfPlus
                     {
                         Rg.Rectangle3d r = info.LayoutInfo.ContentArea.ToRectangle3d();
                         Rg.Plane p = r.Plane;
-                        string[] tag = info.DocumentObject.Tag.ToString().Split('~');
-
+                        string[] tag = info.DocumentObject.Tag?.ToString()?.Split('~');
+                        if(tag == null)
+                        {
+                            tag = new string[] { "" };
+                        }
                         switch (tag[0])
                         {
                             case "Drawing":
